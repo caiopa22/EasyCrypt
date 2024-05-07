@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="aps-css.css">
+    <script type="module" src="https://pyscript.net/snapshots/2023.09.1.RC1/core.js"></script>
+    <link rel="shortcut icon" href="imagens/Encrypt_icon.svg.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>EasyCrypt</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="content first-content">
+            <div class="first-column">
+                </label>
+                <h1 class="title title-primary">Descriptografar</h1>
+                <p class="description description-primary">Clique no botão para</p>
+                <p class="description description-primary">descriptografar senha</p>
+                <button id="entrar" class="btn btn-primary">ir</button>
+            </div><!--first column-->
+            <div class="second-column">
+                <h1 class="title title-second">Encriptografar</h1>
+                <p class="description description-criptografia">Escolha o tipo de criptografia desejada:</p>
+                <div class="input-container">
+                    <input type="radio" id="rsa" name="criptografia" value="RSA" /><label class="criptografia"
+                        for="rsa">RSA</label>
+                    <input type="radio" id="twofish" name="criptografia" value="TWOFISH" /><label class="criptografia"
+                        for="twofish">TWOFISH</label>
+                    <input type="radio" id="des" name="criptografia" value="DES" /><label class="criptografia"
+                        for="des">DES</label>
+                    <input type="radio" id="tls" name="criptografia" value="TLS" /><label class="criptografia"
+                        for="tls">TLS</label>
+                    <input type="radio" id="safer" name="criptografia" value="SAFER" /><label class="criptografia"
+                        for="safer">SAFER</label>
+                </div>
+
+                <p class="description description-second">Digite o que deseja encriptografar abaixo: </p>
+                <form class="form" for="message-primary">
+                    <label class="label-input">
+                        <img src="imagens/envelope-paper.svg" alt="fechado">
+                        <input type="text" name="" id="message-primary" placeholder="Mensagem para encriptografar"
+                        autocomplete="off">
+                    </label>
+                    <label class="label-input" for="encrypted-message-primary">
+                        <img src="imagens/envelope.svg" alt="aberto">
+                        <input type="password" name="encrypted-message-primary" id="encrypted-message-primary"
+                            placeholder="Mensagem criptografada" value="" readonly>
+                        <i class="bi bi-eye-fill" id="btn-encrypted-message-primary" onclick="mostrarSenhaPrimary()"></i>
+                    </label>
+                    <div id="senhas">
+                        <label for="chave-privada" class="label-input">
+                            <i class="bi bi-key"></i>
+                            <input type="text" name="encrypted-message-primary" id="chave-privada1" placeholder="Chave privada"
+                                value="" autocomplete="off" readonly>
+                        </label>
+                        <label for="chave-publica" class="label-input">
+                            <i class="bi bi-key-fill"></i>
+                            <input type="text" name="encrypted-message-primary" id="chave-publica1" placeholder="Chave pública"
+                                value="" autocomplete="off" readonly>
+                        </label>
+                    </div>
+                    <div id="senhasVisivel">
+                        <p id="senhaPrivadaVisivel">Chave privada</p>
+                        <p id="senhaPublicaVisivel">Chave pública</p>
+                    </div>
+                    <button class="btn btn-second" py-click="criptografar" type="button">ENCRIPTOGRAFAR</button>
+                    <button py-click="exportadados" class="btn btn-second" type="button" id="exportaDados"><span
+                            class="material-symbols-outlined">
+                            sync_alt
+                        </span></button>
+                    <P id="aviso">AVISO</P>
+                </form>
+            </div><!--second column-->
+        </div><!--first content-->
+        <div class="content second-content">
+            <div class="first-column">
+                <h1 class="title title-primary">criptografar</h1>
+                <p class="description description-primary">Clique no botão para</p>
+                <p class="description description-primary">criptografar senha</p>
+                <button id="sair" class="btn btn-primary">voltar</button>
+            </div><!--first column-->
+            <div class="second-column">
+                <h1 class="title title-second">Descriptografar</h1>
+                <p class="description description-criptografia">Escolha o tipo de criptografia desejada:</p>
+                <div class="input-container">
+                    <input type="radio" id="rsa2" name="criptografia2" value="RSA" /><label class="criptografia"
+                        for="rsa2">RSA</label>
+                    <input type="radio" id="twofish2" name="criptografia2" value="TWOFISH" /><label class="criptografia"
+                        for="twofish2">TWOFISH</label>
+                    <input type="radio" id="des2" name="criptografia2" value="DES" /><label class="criptografia"
+                        for="des2">DES</label>
+                    <input type="radio" id="tls2" name="criptografia2" value="TLS" /><label class="criptografia"
+                        for="tls2">TLS</label>
+                    <input type="radio" id="safer2" name="criptografia2" value="SAFER" /><label class="criptografia"
+                        for="safer2">SAFER</label>
+                </div>
+                <p class="description description-second">Digite o que deseja descriptografar abaixo: </p>
+                <form class="form">
+                    <div id="senhas">
+                        <label for="chave-privada" class="label-input">
+                            <i class="bi bi-key"></i>
+                            <input type="text" name="encrypted-message-primary" id="chave-privada2" placeholder="Chave privada"
+                                value="" autocomplete="off">
+                        </label>
+                        <label for="chave-publica" class="label-input">
+                            <i class="bi bi-key-fill"></i>
+                            <input type="text" name="encrypted-message-primary" id="chave-publica2" placeholder="Chave pública"
+                                value="" autocomplete="off">
+                        </label>
+                    </div>
+                    <label class="label-input" for="encrypted-message-second">
+                        <img src="imagens/envelope.svg" alt="aberto">
+                        <input type="email" name="" id="encrypted-message-second" placeholder="Mensagem criptografada"
+                        autocomplete="off">
+                    </label>
+                    <label class="label-input" for="btn-decrypted-message-second">
+                        <img src="imagens/envelope-paper.svg" alt="fechado">
+                        <input type="password" name="" id="decrypted-message" placeholder="Mensagem descriptografada"
+                            readonly>
+                        <i class="bi bi-eye-fill" id="btn-decrypted-message" onclick="mostrarSenhaSecond()"></i>
+                    </label>
+                    <button class="btn btn-second" type="button" py-click="descriptografar">descriptografar</button>
+                    <P id="aviso2">AVISO</P>
+
+                </form>
+            </div><!--second column-->
+        </div><!--second content-->
+    </div>
+    <script src="script.js"></script>
+    <script type="py" src="main.py"></script>
+</body>
+
+</html>
